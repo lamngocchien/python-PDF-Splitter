@@ -1,32 +1,38 @@
-Summary of PDFSplitterApp Python Script:
+**PDF Splitter Application**  
+*Developed by ChatGPT*
 
-This app write by CHATGPT
+---
 
-The provided Python script implements a graphical user interface (GUI) application called PDF Splitter, built using customtkinter and PyMuPDF (fitz). The application enables users to:
+The PDF Splitter application is a graphical user interface (GUI) tool designed to simplify the process of splitting PDF files. Built using `customtkinter` for a modern and user-friendly interface, and `PyMuPDF` (fitz) for efficient PDF handling, the app provides users with an intuitive experience.
 
-Open and View PDFs:
+### Key Features:
 
-Users select a PDF file via a file dialog.
-Thumbnails of each page are displayed in a scrollable, grid-based layout.
-Select Pages for Splitting:
+**1. Open and View PDFs:**
+- Select PDF files easily through a file dialog.
+- Instantly view thumbnails of each page in a convenient, scrollable, and grid-based layout.
 
-Clicking thumbnails toggles visual markers indicating where the PDF will be split.
-Users can preview each page in full-screen mode and rotate the displayed pages.
-Perform PDF Splitting:
+**2. Select Pages for Splitting:**
+- Click thumbnails to visually mark pages for splitting.
+- Preview pages in detailed full-screen views, with options to rotate pages for better visibility.
 
-After marking split points, users select an output directory to save split PDF files.
-The PDF is split at the chosen markers, generating separate PDF files.
-Open Output Folder:
+**3. Perform PDF Splitting:**
+- Quickly define split points by selecting pages.
+- Choose an output directory to save the resulting split PDF files.
+- Automatically generate separate PDFs based on selected markers.
 
-After splitting, users can directly open the output folder from the application interface.
-Key Components and Libraries:
+**4. Easy Access to Output Folder:**
+- Open the folder containing the split PDFs directly from within the application.
 
-GUI built with customtkinter (dark mode, modern UI).
-PDF rendering and manipulation using fitz (PyMuPDF).
-Image processing via PIL (Pillow) for page previews and thumbnails.
-The script can be packaged into a standalone executable using the provided PyInstaller command:
+### Technologies and Libraries Used:
+- **GUI Framework:** `customtkinter` (supports dark mode and modern UI aesthetics).
+- **PDF Processing:** `PyMuPDF (fitz)` for rendering and manipulating PDF documents.
+- **Image Handling:** `Pillow (PIL)` to manage and display page thumbnails and previews.
 
+### Packaging Instructions:
+Use the provided PyInstaller command to compile the script into a standalone executable:
 
-Copy code
+```shell
 pyinstaller --onefile --noconsole --hidden-import fitz --hidden-import PIL --hidden-import customtkinter smart_pdf.py --name "PDF-Splitter_1.0.exe"
-This produces a single executable file that runs without showing a command-line window.
+```
+
+This command generates a single executable (`PDF-Splitter_1.0.exe`) that runs independently without displaying a command-line window.
