@@ -5,7 +5,7 @@
 
 ![PDF Splitter Interface](./screenshot.png)
 
-The PDF Splitter application is a graphical user interface (GUI) tool designed to simplify the process of splitting PDF files. Built using `customtkinter` for a modern and user-friendly interface, and `PyMuPDF` (fitz) for efficient PDF handling, the app provides users with an intuitive experience.
+The PDF Splitter application is a graphical user interface (GUI) tool designed to simplify the process of splitting PDF files. Built using `customtkinter` for a modern and user-friendly interface, and `PyMuPDF` (fitz) for efficient PDF handling, the app provides users with an intuitive experience. The application was developed and tested with Python 3.12.6 to ensure compatibility and optimal performance.
 
 ### Key Features:
 
