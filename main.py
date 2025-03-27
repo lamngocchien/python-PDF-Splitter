@@ -1,3 +1,4 @@
+# pyinstaller --onefile --noconsole --hidden-import fitz --hidden-import PIL --hidden-import customtkinter smart_pdf.py --name "PDF-Splitter_V2.0.exe"
 
 import fitz  # PyMuPDF
 import customtkinter as ctk
@@ -36,6 +37,9 @@ class PDFSplitterApp:
         self.btn_save = ctk.CTkButton(top_frame, text="Save Split PDFs", command=self.split_all_pdfs)
         self.btn_save.pack(side="right", padx=10)
 
+        self.btn_join = ctk.CTkButton(top_frame, text="Join PDFs", command=self.join_pdfs)
+        self.btn_join.pack(side="right", padx=10)
+
         self.split_folder_frame = ctk.CTkFrame(root)
         self.split_folder_frame.pack(pady=5, fill="x", padx=10)
         self.split_folder_frame.pack_forget()
@@ -48,6 +52,36 @@ class PDFSplitterApp:
 
         self.scrollable_frame = ctk.CTkScrollableFrame(root)
         self.scrollable_frame.pack(fill="both", expand=True, padx=10, pady=10)
+
+    def join_pdfs(self):
+        if not self.pdf_paths:
+            messagebox.showwarning("No files", "Please load PDFs first.")
+            return
+
+        output_path = filedialog.asksaveasfilename(
+            defaultextension=".pdf",
+            filetypes=[("PDF files", "*.pdf")],
+            title="Save Joined PDF As"
+        )
+        if not output_path:
+            return
+
+        try:
+            merged_doc = fitz.open()
+
+            for path in self.pdf_paths:
+                doc = fitz.open(path)
+                merged_doc.insert_pdf(doc)
+                doc.close()
+
+            merged_doc.save(output_path)
+            merged_doc.close()
+
+            messagebox.showinfo("Success", f"Joined PDF saved to:\n{output_path}")
+            os.startfile(os.path.dirname(output_path))
+
+        except Exception as e:
+            messagebox.showerror("Error", f"Failed to join PDFs:\n{str(e)}")
 
     def load_pdfs(self):
         self.pdf_paths = filedialog.askopenfilenames(filetypes=[("PDF Files", "*.pdf")])
